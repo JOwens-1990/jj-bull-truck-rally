@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#fff9ed"><meta name="description" content="JJ's colorful bull monster trucks. Jump lava, race rival trucks, and explore 50 playful courses.">
+  <title>JJ’s Bull Truck Rally</title><link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<svg class="sprite" aria-hidden="true"><defs>
+<symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 21V4m0 0c5-5 9 5 14 0v10c-5 5-9-5-14 0"/><path d="M9 3v5m5-3v5m-5 3V8m5 7v-5"/></symbol>
+<symbol id="i-sound" viewBox="0 0 24 24"><path d="m11 4-6 5H2v6h3l6 5zM15 8q5 4 0 8m3-12q9 8 0 16"/></symbol>
+<symbol id="i-hand" viewBox="0 0 24 24"><path d="M7 12V6a2 2 0 0 1 4 0v5-7a2 2 0 0 1 4 0v7-5a2 2 0 0 1 4 0v7-3a2 2 0 0 1 4 0v6c0 5-3 7-7 7h-2c-3 0-5-2-7-5l-4-5c-1-2 1-4 3-2l3 3" transform="translate(-1 -1) scale(.95)"/></symbol>
+<symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6"/></symbol>
+<symbol id="i-star" viewBox="0 0 24 24"><path d="m12 2 3 6.5 7 .9-5 5 1.3 7.1L12 18l-6.3 3.5L7 14.4l-5-5 7-.9z"/></symbol>
+<symbol id="i-pause" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14"/></symbol>
+</defs></svg>
+<header class="topbar"><a href="#" id="brand" class="brand" aria-label="JJ's Bull Truck Rally garage"><img src="favicon.svg" alt="" width="49" height="49"><span><small>JJ’S</small>BULL TRUCK RALLY</span></a><div class="top-actions"><button id="sound" class="icon-button" aria-label="Turn sound off" aria-pressed="true"><svg><use href="#i-sound"/></svg><span class="sound-state">ON</span></button><button id="help" class="plain-button">How to play <span class="question">?</span></button></div></header>
+<main>
+<section id="garage" aria-label="Choose your adventure">
+  <div class="intro"><div><p class="eyebrow"><span></span> BIG HORNS. BIGGER JUMPS.</p><h1>Ready to <span>rumble?</span></h1></div><p class="intro-note">A little remote.<br>A whole lot of adventure.</p></div>
+  <div class="garage-layout">
+    <aside class="setup-card">
+      <div class="section-label"><span>01</span> PICK YOUR BULL</div><div class="truck-title"><h2 id="truck-name">Orange Crusher</h2><span class="truck-number" id="truck-number">01</span></div>
+      <div id="colors" class="colors" role="group" aria-label="Truck color"></div>
+      <div class="divider"></div>
+      <div class="section-label"><span>02</span> CHOOSE YOUR ADVENTURE</div>
+      <button id="choose-level" class="level-button"><span class="level-icon"><svg><use href="#i-flag"/></svg></span><span><small id="level-small">LEVEL 01 / 50</small><strong id="level-name">First Rumble</strong></span><span class="chevron">›</span></button>
+      <div class="segmented" role="group" aria-label="Game mode"><button id="race-mode" class="selected" aria-pressed="true">Race <span>3 rivals</span></button><button id="practice-mode" aria-pressed="false">Explore <span>Just you</span></button></div>
+      <button id="auto-toggle" class="toggle-row" aria-pressed="false"><span><strong>Self-drive</strong><small>Let your bull take the wheel</small></span><span class="switch"><span></span></span></button>
+      <button id="play" class="primary play-button">LET’S ROLL! <svg><use href="#i-arrow"/></svg></button>
+      <p class="small-note">Every truck. Every level. Ready to play.</p>
+    </aside>
+    <div class="stage-shell" id="stage-shell">
+      <div class="stage-badge" id="stage-badge"><span class="badge-dot"></span><span id="world-label">LAVA CANYON</span></div>
+      <canvas id="scene" tabindex="0" role="img" aria-label="A colorful bull monster truck at a lava-jump race course"></canvas>
+      <div class="hero-caption" id="hero-caption"><span>MADE FOR BIG IMAGINATIONS</span><strong>Horns up. Adventure on.</strong></div>
+      <div id="hud" class="hud" hidden><div class="hud-left"><span class="hud-pill"><svg><use href="#i-flag"/></svg><b id="place">1st</b></span><span class="hud-pill stars-pill"><svg><use href="#i-star"/></svg><b id="stars">0</b></span></div><div class="hud-center"><span id="hud-level">LEVEL 1</span><div class="progress-track"><span id="progress"></span></div></div><div class="hud-right"><span class="hud-pill timer" id="timer">0:00</span><button id="pause" class="hud-pill icon-button" aria-label="Pause game"><svg><use href="#i-pause"/></svg></button></div></div>
+      <div class="toast" id="toast" role="status" hidden></div>
+      <div class="driving-note" id="driving-note" hidden>Hold DRIVE to go. The ramps help you fly!</div>
+      <div class="scene-overlay" id="pause-overlay" hidden><div class="overlay-card"><p class="eyebrow">PIT STOP</p><h2>Take a breather.</h2><p>Your bull will be right here.</p><button class="primary" id="resume">Keep rolling <svg><use href="#i-arrow"/></svg></button><div class="overlay-links"><button id="retry" class="plain-button">Try again</button><button id="back-garage" class="plain-button">Garage</button></div></div></div>
+      <div class="scene-overlay" id="finish-overlay" hidden><div class="overlay-card finish-card"><div class="finish-trophy">★</div><p class="eyebrow" id="finish-kicker">FINISH LINE!</p><h2 id="finish-title">Bull-tastic!</h2><p id="finish-detail"></p><div class="result-stats"><span><b id="finish-place">1st</b>PLACE</span><span><b id="finish-stars">3</b>STARS</span><span><b id="finish-time">0:32</b>TIME</span></div><button class="primary" id="next">Next adventure <svg><use href="#i-arrow"/></svg></button><div class="overlay-links"><button id="replay" class="plain-button">Race again</button><button id="finish-garage" class="plain-button">Garage</button></div></div></div>
+    </div>
+  </div>
+  <div class="worlds-heading" id="worlds-heading"><p class="eyebrow">50 LEVELS. ONE BIG ADVENTURE.</p><span id="completion-count">0 / 50 explored</span></div><div id="worlds" class="worlds" aria-label="Choose a world"></div>
+</section>
+<section id="drive-controls" class="drive-controls" aria-label="Driving controls" hidden><div class="control-extras"><button id="game-auto" class="secondary" aria-pressed="false">Self-drive <span>OFF</span></button><button id="camera-button" class="secondary"><svg><use href="#i-hand"/></svg> Hand control</button></div><div class="pedals"><button id="brake" class="pedal brake">BRAKE <kbd>←</kbd></button><button id="jump" class="pedal jump">JUMP <kbd>SPACE</kbd></button><button id="throttle" class="pedal throttle">DRIVE <kbd>→</kbd></button></div></section>
+<section id="camera-panel" class="camera-panel" hidden><video id="camera-video" autoplay playsinline muted></video><div><strong>Hand control</strong><p id="camera-status" role="status">Getting ready…</p><small>Open hand: drive · Fist: brake · Lift: jump</small></div><button id="stop-camera" class="plain-button">Turn camera off</button></section>
+<footer><span>A game dreamed up by <strong>JJ.</strong></span><span>Little drivers welcome <span class="footer-star">✦</span></span></footer>
+</main>
+<dialog id="levels-dialog"><div class="dialog-heading"><div><p class="eyebrow">WHERE TO NEXT?</p><h2>Choose a level</h2></div><button class="close-dialog icon-button" aria-label="Close levels">×</button></div><div id="level-world-tabs" class="level-world-tabs"></div><div id="level-grid" class="level-grid"></div><p class="small-note">★ means you’ve finished it. Play any level you like.</p></dialog>
+<dialog id="help-dialog"><div class="dialog-heading"><div><p class="eyebrow">YOU’VE GOT THIS</p><h2>Small remote. Big fun.</h2></div><button class="close-dialog icon-button" aria-label="Close help">×</button></div><div class="help-grid"><article><span>01</span><h3>Pick your bull</h3><p>Choose a color and any of the 50 levels. Race three trucks or explore on your own.</p></article><article><span>02</span><h3>Make it rumble</h3><p>Hold DRIVE or → / D to go. Use BRAKE or ← / A to slow down. JUMP or Space gives you a hop.</p></article><article><span>03</span><h3>Catch some air</h3><p>Keep your speed up for ramps! Grab stars and fly over lava. Miss a jump? We’ll give you a friendly lift.</p></article><article><span>04</span><h3>Try something new</h3><p>Turn on Self-drive to watch your bull race. Or choose Hand control while playing to drive with your camera.</p></article></div><p class="help-note">P or Esc pauses. Your finished levels save on this device when browser storage is available.</p><button class="primary close-dialog">Got it. Let’s play!</button></dialog>
+<dialog id="camera-dialog"><div class="dialog-heading"><div><p class="eyebrow">READY, SET, WAVE</p><h2>Your hand is the remote.</h2></div><button class="close-dialog icon-button" aria-label="Close hand-control setup">×</button></div><div class="camera-instructions"><p><b>✋ Open your hand</b><span>Your bull drives forward.</span></p><p><b>✊ Make a fist</b><span>Your bull slows down.</span></p><p><b>☝ Lift your hand</b><span>Your bull jumps!</span></p></div><p class="help-note">Your browser will ask to use the camera. The game processes the picture on your device and doesn’t record or upload video. A grown-up can help you get set up.</p><button id="enable-camera" class="primary">Turn on hand control</button><p class="small-note">You can switch it off at any time.</p></dialog>
+<script type="module" src="app.js"></script>
+</body></html>
