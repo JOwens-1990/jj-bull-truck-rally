@@ -1,0 +1,10 @@
+dist/
+node_modules/
+test-results/
+.DS_Store
+qa/
+WORKING-NOTES.md
+CONTRACT.md
+tests/browser-qa.mjs
+tests/live-qa.mjs
+release-manifest.json
